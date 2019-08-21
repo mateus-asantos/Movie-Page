@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import logo from './logo.svg';
 import './styles/App.css';
 import SearchField from './components/Search/SearchField';
 import { getGenreList } from './utils/requests';
-import { addGenres, displayInternalPage } from './actions';
-import MovieCard from './components/Movies/MovieCard';
+import { addGenres } from './actions';
 import MovieList from './components/Movies/MovieList';
 import MovieInternalPage from './components/Movies/MovieInternalPage';
 
@@ -24,8 +22,8 @@ const ConnectedApp = (props) => {
 	useEffect(() => {
 		getGenreList().then(res => {
 			props.addGenres(res.data.genres)
-		})
-	}, [])
+		},[])
+	})
 
 	const searchPage = (
 		<React.Fragment>

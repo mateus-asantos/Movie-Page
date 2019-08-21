@@ -20,7 +20,6 @@ const initialState = {
     moviesPerPage: 5,
     currentPage: 1,
     requestPage: 1,
-    totalResults: 0,
     searchQuery: "",
     internalPageMovieId:null,
     displayInternalPage:false

@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ConnectedMovieInternalPage = (props) => {
     const [MovieInfo, setMovieInfo] = useState({})
-    const [MovieLanguage, setMovieLanguage] = useState("")
 
     let date = new Date(MovieInfo.release_date)
 
@@ -64,11 +63,11 @@ const ConnectedMovieInternalPage = (props) => {
             <div className="Filme-detalhe-header">
                 <h3 className="Filme-detalhe-nome">{MovieInfo.title}</h3>
                 <p className="Filme-detelhe-lancamento">{
-                    date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear()
+                    date.getDay() == 0 ? date.getMonth() + "/" + date.getFullYear() : date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear()
                 }</p>
             </div>
             <div className="Filme-detalhe-content">
-                <img className="Filme-detalhe-poster" src={MovieInfo.poster_path ? "https://image.tmdb.org/t/p/w342" + MovieInfo.poster_path : ""} />
+                <img className="Filme-detalhe-poster" src={MovieInfo.poster_path ? "https://image.tmdb.org/t/p/w342" + MovieInfo.poster_path : ""} alt="Pôster do filme" />
                 <div className="Filme-detalhe-text">
                     <h3 className="Filme-detalhe-sinopse-titulo">Sinopse</h3>
                     <p className="Filme-detalhe-sinopse">{MovieInfo.overview}</p>
@@ -104,7 +103,7 @@ const ConnectedMovieInternalPage = (props) => {
                                 Orçamento
                             </div>
                             <div className="Filme-detalhe-informacao-item-texto">
-                                ${MovieInfo.budget ? (MovieInfo.budget).toFixed(2).replace(".", ",").replace(/\d(?=(\d{3})+\,)/g, '$&.') : ""}
+                                ${MovieInfo.budget ? (MovieInfo.budget).toFixed(2).replace(".", ",").replace(/\d(?=(\d{3})+,)/g, '$&.') : ""}
                             </div>
                         </div>
                         <div className="Filme-detalhe-informacao-item" id="Receita" >
@@ -112,7 +111,7 @@ const ConnectedMovieInternalPage = (props) => {
                                 Receita
                             </div>
                             <div className="Filme-detalhe-informacao-item-texto">
-                                ${MovieInfo.revenue ? (MovieInfo.revenue).toFixed(2).replace(".", ",").replace(/\d(?=(\d{3})+\,)/g, '$&.') : ""}
+                                ${MovieInfo.revenue ? (MovieInfo.revenue).toFixed(2).replace(".", ",").replace(/\d(?=(\d{3})+,)/g, '$&.') : ""}
                             </div>
                         </div>
                         <div className="Filme-detalhe-informacao-item" id="Lucro" >
@@ -120,13 +119,13 @@ const ConnectedMovieInternalPage = (props) => {
                                 Lucro
                             </div>
                             <div className="Filme-detalhe-informacao-item-texto">
-                                ${MovieInfo.revenue ? (MovieInfo.revenue - MovieInfo.budget).toFixed(2).replace(".", ",").replace(/\d(?=(\d{3})+\,)/g, '$&.') : ""}
+                                ${MovieInfo.revenue ? (MovieInfo.revenue - MovieInfo.budget).toFixed(2).replace(".", ",").replace(/\d(?=(\d{3})+,)/g, '$&.') : ""}
                             </div>
                         </div>
                     </div>
                     <ul className="Filme-lista-generos">
                         {MovieInfo.genres ? MovieInfo.genres.map(genre => (
-                            <li className="Filme-genero">{genre.name}</li>
+                            <li className="Filme-genero" key={genre.name}>{genre.name}</li>
                         )) : ""}
                     </ul>
                     <div className="Filme-detalhe-score-badge">

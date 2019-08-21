@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux'
-import useDebounce from '../../utils/debouncer'
+
+import { connect } from 'react-redux';
+import useDebounce from '../../utils/debouncer';
 import search from './search';
 import { changeSearchQuery,changePages } from '../../actions';
 

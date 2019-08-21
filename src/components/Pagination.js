@@ -34,7 +34,7 @@ const ConnectedPagination = (props) => {
         }
         setPageNumbers(pageArray)
 
-    }, [props.currentPage])
+    }, [props.currentPage, props.moviePerPage, props.totalResults])
 
 
     const handleClick = (value) => {

@@ -1,7 +1,7 @@
 import store from '../../store/index'
 
 import { searchMovieByName, discoverMovieByGenre, discoverMovieByYear } from '../../utils/requests';
-import { addMovies, toggleLoading, addTotalResults, changeSearchQuery, appendMovies } from '../../actions';
+import { addMovies, toggleLoading, addTotalResults, appendMovies } from '../../actions';
 import { ADD_MOVIES, APPEND_MOVIES } from '../../constants';
 
 /* const mapStateToProps = (state) => {
@@ -28,7 +28,7 @@ const Search = (searchQuery, mode = ADD_MOVIES, page = 1) => {
     let search = genres.find(genre => genre.name === searchQuery || genre.name.toLocaleLowerCase() === searchQuery)
     if (search !== undefined) {
         /* then gets all movies with that genre */
-        discoverMovieByGenre(search.id,page).then(res => {
+        discoverMovieByGenre(search.id, page).then(res => {
             /* Add to the state */
             dispatch(addTotalResults(res.data.total_results))
             if (mode === ADD_MOVIES) dispatch(addMovies(res.data.results))
@@ -38,7 +38,7 @@ const Search = (searchQuery, mode = ADD_MOVIES, page = 1) => {
     } else if (searchQuery.length === 4 && searchQuery.match(/(\d+)/) !== undefined) {
 
         /* Search by year */
-        discoverMovieByYear(searchQuery,page).then(res => {
+        discoverMovieByYear(searchQuery, page).then(res => {
             /* Add to the state */
             dispatch(addTotalResults(res.data.total_results))
             if (mode === ADD_MOVIES) dispatch(addMovies(res.data.results))
@@ -47,17 +47,18 @@ const Search = (searchQuery, mode = ADD_MOVIES, page = 1) => {
         })
     } else {
         /* Search by name */
-        searchMovieByName(searchQuery,page).then(res => {
+        searchMovieByName(searchQuery, page).then(res => {
             /* Add to the state */
+            let results = res.data.results.sort((a, b) => (a.popularity < b.popularity ? 1 : -1))
             dispatch(addTotalResults(res.data.total_results))
-            console.log('page',page)
-            if (mode === ADD_MOVIES) dispatch(addMovies(res.data.results))
-            else if (mode === APPEND_MOVIES) dispatch(appendMovies(res.data.results))
+            console.log('page', page)
+            if (mode === ADD_MOVIES) dispatch(addMovies(results))
+            else if (mode === APPEND_MOVIES) dispatch(appendMovies(results))
             dispatch(toggleLoading(false))
         })
 
     }
-    
+
 }
 
 

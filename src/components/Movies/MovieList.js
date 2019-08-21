@@ -21,9 +21,7 @@ const ConnectedMovieList = (props) => {
     let indexOfLastMovie = props.currentPage * props.moviesPerPage;
     let indexOfFirstMovie = indexOfLastMovie - props.moviesPerPage;
     let maxPages = Math.ceil(props.totalResults / props.moviesPerPage)
-    useEffect(() => {
-        maxPages = Math.ceil(props.totalResults / props.moviesPerPage)
-    }, [props.totalResults])
+
     
     useEffect(() => {
 
@@ -31,12 +29,11 @@ const ConnectedMovieList = (props) => {
         if (props.movies.length > 0) {
 
             if(indexOfLastMovie>props.movies.length && props.currentPage< maxPages){
-                requestPage = Math.ceil(props.currentPage / props.moviesPerPage) + 1
                 Search(props.searchQuery, APPEND_MOVIES,Math.floor(requestPage))
             }
         }
 
-    }, [props.currentPage,maxPages])
+    }, [props.currentPage,maxPages,indexOfLastMovie,props.movies.length,props.searchQuery,requestPage])
     
 
 
