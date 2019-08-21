@@ -1,0 +1,370 @@
+:root {
+	--color-01: #296192;
+	--color-02: #5fdada;
+	--color-03: #ebebeb;
+	--text-color-01: #555555;
+	--font-01: "Abel", sans-serif;
+	--font-02: "Lato", sans-serif;
+}
+
+.App {
+	text-align: center;
+}
+
+.App-header {
+	font-family: var(--font-01);
+	background-color: var(--color-01);
+	color: var(--color-02);
+	height: 85px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.App-title {
+	font-size: calc(15px + 3vmin);
+	font-weight: normal;
+	margin: 0;
+}
+
+.App-main {
+	padding: 0 5vw;
+	display: flex;
+	flex-direction: column;
+}
+
+.Search-input {
+	font-family: var(--font-01);
+	color: var(--color-01);
+	background-color: var(--color-03);
+	font-size: 18px;
+	border-color: transparent;
+	border-radius: 40px;
+	padding: 15px 30px;
+	margin: 50px 0;
+}
+
+.Search-input::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: var(--color-01);
+	opacity: 0.5;
+}
+
+.Search-input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: var(--color-01);
+	opacity: 0.5;
+}
+
+.Search-input::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: var(--color-01);
+	opacity: 0.5;
+}
+
+.Filme-card {
+	margin: 0 0 50px 0;
+	display: flex;
+	background-color: var(--color-03);
+}
+
+.Filme-poster {
+	width: calc(280px - 1vw);
+    height: auto;
+}
+
+.Filme-info {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	width: 100%;
+}
+
+.Filme-header {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.Filme-nome {
+	cursor: pointer;
+	background-color: var(--color-01);
+	font-family: var(--font-01);
+	color: var(--color-02);
+	font-weight: normal;
+	font-size: calc(15px + 3vmin);
+	width: 100%;
+	height: fit-content;
+	margin: 0;
+	padding: 30px 5px 10px calc(100px + 2vw);
+	text-align: left;
+}
+
+.Filme-score-badge {
+	background-color: var(--color-01);
+	width: 100px;
+	height: 100px;
+	min-width: 60px;
+	min-height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	margin: -50px 0 0 20px;
+}
+
+.Filme-score {
+	border: 5px solid var(--color-02);
+	font-family: var(--font-01);
+	width: 80px;
+	height: 80px;
+	min-width: 50px;
+	min-height: 50px;
+	border-radius: 50%;
+	font-size: calc(25px + 1vmin);
+	color: var(--color-02);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Filme-lancamento {
+	color: #848484;
+	margin: 5px 0 0 14px;
+	font-family: var(--font-02);
+	font-weight: 100;
+	font-size: calc(15px + 1vmin);
+}
+
+.Filme-sinopse {
+	padding: 0 35px;
+	width: 100%;
+	text-align: left;
+	font-family: var(--font-02);
+	font-size:calc(10px + 1vmin);
+	margin: 20px 0;
+	max-height: 175px;
+	overflow: hidden;
+}
+
+.Filme-sinopse a{
+	margin: 0 0 0 10px
+}
+
+.Filme-lista-generos{
+	display: flex;
+	color: var(--color-01);
+	padding: 0 35px;
+	flex-wrap: wrap;
+}
+
+.Filme-genero{
+	display: block;
+	border-radius: 20px;
+	border: 2px solid var(--color-01);
+	background-color: white;
+	padding: 5px 10px;
+	font-family: var(--font-01);
+	font-size:calc(10px + 1vmin);
+	height: fit-content;
+	margin: 0 10px 5px 0;
+}
+
+.Filme-detalhe{
+	display: flex;
+	width:100%;
+	flex-direction: column;
+	margin-bottom: 30px;
+}
+
+.Filme-detalhe-header{
+	background-color: #e6e6e6;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 0;
+	width: 100%
+}
+
+.Filme-detalhe-content{
+	display: flex;
+	flex-direction: row-reverse;
+	background-color: #f2f3f2;
+}
+
+.Filme-detalhe-nome{
+	font-family: var(--font-01);
+	color: var(--color-01);
+	font-size: calc(15px + 3vmin);
+	font-weight: normal;
+	display: flex;
+	align-items: center;
+	margin: 0 20px;
+	
+}
+.Filme-detelhe-lancamento{
+	color: #848484;
+	margin: 0 20px;
+	font-family: var(--font-02);
+	font-weight: 100;
+	font-size: calc(15px + 1vmin);
+}
+
+.Filme-detalhe-poster{
+	width: calc(340px - 2vw);
+	height: auto;
+	max-height: 540px;
+}
+
+.Filme-detalhe-text{
+	display: flex;
+	flex-direction: column;
+}
+
+.Filme-detalhe-sinopse-titulo, .Filme-detalhe-informacao-titulo, .Filme-detalhe-informacao-item-titulo{
+	font-family: var(--font-01);
+	color: var(--color-01);
+	font-size: calc(12px + 2vmin);
+	font-weight: normal;
+	border-bottom: 3px solid var(--color-02);
+	text-align:left;
+	margin: 20px 40px;
+}
+
+.Filme-detalhe-sinopse{
+	font-family: var(--font-02);
+	color: var(--text-color-01);
+	font-size:calc(10px + 1vmin);
+	font-weight: normal;
+	text-align: left;
+	margin: 0 40px;
+}
+
+.Filme-detalhe-informacao{
+	display: flex;
+	justify-content: flex-start;
+	margin: 5px 40px;
+	flex-wrap: wrap;
+	font-weight: 300;
+}
+
+.Filme-detalhe-informacao-item{
+	margin: 0 40px 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Filme-detalhe-informacao-item-titulo{
+	border: 0px transparent;
+	margin: 0
+}
+
+.Filme-detalhe-score-badge{
+	background-color: var(--color-01);
+	width: 100px;
+	height: 100px;
+	min-width: 60px;
+	min-height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	margin: -40px 30px 0 0;
+	align-self: flex-end;
+}
+
+.Filme-video{
+	margin: 40px 0;
+}
+
+.Paginacao{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Paginacao-item{
+	font-family: var(--font-01);
+	color: var(--color-01);
+	font-size:calc(10px + 2vmin);
+	display: block;
+	margin: 0 15px 0 0;
+	cursor: pointer;
+}
+
+.Paginacao-item-selecionado{
+	background-color: var(--color-01);
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	margin: 0 15px 0 0;
+}
+
+.Selecionado{
+	background-color:var(--color-01);
+	color: var(--color-02);
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	border:solid 5px var(--color-02);
+}
+
+.Filme-detalhe-voltar{
+	cursor: pointer;
+	text-align: left;
+	margin:  30px 0 30px 0;
+	font-size: calc(25px + 1vmin);
+	color: var(--color-01);
+	font-family: var(--font-01);
+}
+
+
+@media screen and (max-width: 768px){
+	.Filme-card{
+		flex-direction: column
+	}
+
+	.Filme-poster{
+		width: 100%;
+		height: auto;
+	}
+
+	.Filme-score-badge{
+		margin: -29px 0 0 20px;
+		width:72px;
+		height: 60px;
+	}
+	.Filme-score{
+		width: 60px;
+		height: 60px;
+	}
+
+	.Filme-sinopse{
+		max-height: unset;
+		padding: 0 20px;
+	}
+
+	.Filme-detalhe-content{
+		flex-direction: column;
+	}
+
+	.Filme-detalhe-poster{
+		width: 100%;
+		height: auto;
+		max-height: unset;
+	}
+	.Filme-detalhe-score-badge{
+		margin: -100px 30px 30px 0;
+	}
+	.Filme-detalhe-informacao-item{
+		align-items: flex-start;
+	}
+
+}
