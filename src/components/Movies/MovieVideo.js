@@ -16,7 +16,7 @@ const MovieVideos = (movieID) =>{
     /* console.log(MovieVideo[0]?MovieVideo[0].key:"") */
     if(MovieVideo){
         return(
-            <iframe className="Filme-video" width="100%" height="664" src={MovieVideo} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            <iframe className="Filme-video" width="100%" height="664" src={MovieVideo} title="Trailer" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         )
     }else{
         return null
