@@ -23,7 +23,7 @@ const ConnectedSearchField = (props) => {
             props.changeSearchQuery(debouncedSearchInput)
             props.changePages(1)
         }
-    }, [debouncedSearchInput])
+    }, [debouncedSearchInput,props])
 
     /* Returning the search input*/
     return (

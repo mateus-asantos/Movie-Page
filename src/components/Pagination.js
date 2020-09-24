@@ -22,8 +22,11 @@ const ConnectedPagination = (props) => {
 
         let pageArray = []
         let pageNumber = 0
+
         props.currentPage === 1 ? pageNumber = props.currentPage : pageNumber = props.currentPage - 1
+
         let maxPages = Math.ceil(props.totalResults / props.moviePerPage);
+
         for (let i = 0; i < props.moviePerPage; i++) {
             pageArray.push(pageNumber);
             if (pageNumber < maxPages) {
@@ -39,6 +42,7 @@ const ConnectedPagination = (props) => {
 
     const handleClick = (value) => {
         props.changePages(value.target.value)
+        window.scrollTo(0, 0)
     }
 
     return (

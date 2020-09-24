@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './styles/App.css';
 import SearchField from './components/Search/SearchField';
-import { getGenreList } from './utils/requests';
+import { getGenreList } from './data/requests';
 import { addGenres } from './actions';
 import MovieList from './components/Movies/MovieList';
 import MovieInternalPage from './components/Movies/MovieInternalPage';
@@ -22,7 +22,7 @@ const ConnectedApp = (props) => {
 	useEffect(() => {
 		getGenreList().then(res => {
 			props.addGenres(res.data.genres)
-		},[])
+		}, [])
 	})
 
 	const searchPage = (
@@ -42,7 +42,7 @@ const ConnectedApp = (props) => {
 				<h1 className="App-title">Movies</h1>
 			</header>
 			<main className="App-main">
-				{props.displayInternalPage?internalPage:searchPage}
+				{props.displayInternalPage ? internalPage : searchPage}
 			</main>
 		</div>
 	);

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { getMovie } from '../../utils/requests';
+import { getMovie } from '../../data/requests';
 import MovieVideos from './MovieVideo';
 import { displayInternalPage } from '../../actions';
 import { iso_639 } from '../../utils/iso_639'
+import statusTranslation from '../../utils/status_translation';
 
 const mapStateToProps = (state) => ({
     movieID: state.internalPageMovieId
 })
 
+/* Using this to set displayInternalPage to false and, with this, go back to the movie list */
 const mapDispatchToProps = (dispatch) => ({
-    displayInternalPage: (value) => dispatch(displayInternalPage(value))
+    displayInternalPage: () => dispatch(displayInternalPage(false))
 })
 
 const ConnectedMovieInternalPage = (props) => {
@@ -20,50 +22,29 @@ const ConnectedMovieInternalPage = (props) => {
     let date = new Date(MovieInfo.release_date)
 
     useEffect(() => {
+        /* Get information about the movie */
         getMovie(props.movieID).then((res => {
+            /* iso conversion (language name) */
             let state = { ...res.data, original_language: iso_639.find((value) => value.iso_639_1 === res.data.original_language).nome_da_lingua }
 
-            /* traduzindo status */
-            switch (state.status) {
-                case 'Rumored':
-                    state = { ...state, status: 'Rumores' }
-                    break;
-                case 'Planned':
-                    state = { ...state, status: 'Planejado' }
-                    break;
-                case 'In Production':
-                    state = { ...state, status: 'Em produção' }
-                    break;
-                case 'Post Production':
-                    state = { ...state, status: 'Pós-produção' }
-                    break;
-                case 'Released':
-                    state = { ...state, status: 'Lançado' }
-                    break;
-                case 'Canceled':
-                    state = { ...state, status: 'Cancelado ' }
-                    break;
-                default:
-                    break;
-            }
-
+            /* status translation */
+            state = { ...state, status: statusTranslation(state.status) }
             setMovieInfo(state)
         }))
     }, [props.movieID])
 
-
-    const handleVoltar = () => {
+    /* Click on back */
+    const handleBack = () => {
         props.displayInternalPage(false)
     }
 
-    console.log()
     return (
         <section className="Filme-detalhe">
-            <div className="Filme-detalhe-voltar" onClick={handleVoltar}> Voltar</div>
+            <div className="Filme-detalhe-voltar" onClick={handleBack}> Voltar</div>
             <div className="Filme-detalhe-header">
                 <h3 className="Filme-detalhe-nome">{MovieInfo.title}</h3>
-                <p className="Filme-detelhe-lancamento">{
-                    date.getDay() == 0 ? date.getMonth() + "/" + date.getFullYear() : date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear()
+                <p className="Filme-detalhe-lancamento">{
+                    date.getDay() === 0 ? date.getMonth() + "/" + date.getFullYear() : date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear()
                 }</p>
             </div>
             <div className="Filme-detalhe-content">

@@ -4,7 +4,6 @@ import {
     ADD_MOVIES,
     APPEND_MOVIES,
     CHANGE_PAGES,
-    CHANGE_REQUEST_PAGE,
     CHANGE_SEARCH_QUERY,
     ADD_TOTAL_RESULTS,
     DISPLAY_INTERNAL_PAGE,
@@ -41,10 +40,6 @@ export const changePages = (payload) => ({
     payload
 })
 
-export const changeRequestPage = (payload) => ({
-    type: CHANGE_REQUEST_PAGE,
-    payload
-})
 
 export const changeSearchQuery = (payload) => ({
     type: CHANGE_SEARCH_QUERY,
