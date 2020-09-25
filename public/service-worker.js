@@ -1,4 +1,4 @@
-var CACHE_NAME = 'movie-page';
+var CACHE_NAME = 'desafio-cubos';
 var urlsToCache = [
     '/',
     '/completed'
@@ -32,7 +32,7 @@ self.addEventListener('fetch', event => {
 
 // Update a service worker
 self.addEventListener('activate', event => {
-    var cacheWhitelist = ['movie-page'];
+    var cacheWhitelist = ['desafio-cubos'];
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
